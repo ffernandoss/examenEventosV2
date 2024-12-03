@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "91571990713",
+    "project_id": "ejercicio2examen2",
+    "storage_bucket": "ejercicio2examen2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:91571990713:android:c58fc041f5decfeb89ab68",
+        "android_client_info": {
+          "package_name": "com.example.exameneventosv2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZBNndr_W2VXnxFgtINR7dQevSlVfiR4k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
