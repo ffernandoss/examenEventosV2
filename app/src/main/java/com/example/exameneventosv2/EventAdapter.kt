@@ -8,19 +8,19 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 
-class EventAdapter : ListAdapter<Evento, EventAdapter.EventViewHolder>(EventDiffCallback()) {
+class EventAdapter(private val onItemClick: (Evento) -> Unit) : ListAdapter<Evento, EventAdapter.EventViewHolder>(EventDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_event, parent, false)
-        return EventViewHolder(view)
+        return EventViewHolder(view, onItemClick)
     }
 
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
 
-    class EventViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class EventViewHolder(itemView: View, private val onItemClick: (Evento) -> Unit) : RecyclerView.ViewHolder(itemView) {
         private val textViewNombre: TextView = itemView.findViewById(R.id.textViewNombre)
         private val textViewDescripcion: TextView = itemView.findViewById(R.id.textViewDescripcion)
         private val textViewPrecio: TextView = itemView.findViewById(R.id.textViewPrecio)
@@ -29,6 +29,7 @@ class EventAdapter : ListAdapter<Evento, EventAdapter.EventViewHolder>(EventDiff
             textViewNombre.text = evento.nombre
             textViewDescripcion.text = evento.descripcion
             textViewPrecio.text = evento.precio.toString()
+            itemView.setOnClickListener { onItemClick(evento) }
         }
     }
 

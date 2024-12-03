@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -36,7 +37,7 @@ class MainFragment : Fragment() {
 
         val recyclerView: RecyclerView = view.findViewById(R.id.recyclerViewEvents)
         recyclerView.layoutManager = LinearLayoutManager(context)
-        eventAdapter = EventAdapter()
+        eventAdapter = EventAdapter { evento -> showEventDetails(evento) }
         recyclerView.adapter = eventAdapter
 
         db = FirebaseFirestore.getInstance()
@@ -55,6 +56,18 @@ class MainFragment : Fragment() {
 
                 eventAdapter.submitList(events)
             }
+    }
+
+    private fun showEventDetails(evento: Evento) {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle(evento.nombre)
+        builder.setMessage("Descripción: ${evento.descripcion}\n" +
+                "Dirección: ${evento.direccion}\n" +
+                "Precio: ${evento.precio}\n" +
+                "Fecha: ${evento.fecha}\n" +
+                "Aforo: ${evento.aforo}")
+        builder.setPositiveButton("OK", null)
+        builder.show()
     }
 
     override fun onDestroyView() {
