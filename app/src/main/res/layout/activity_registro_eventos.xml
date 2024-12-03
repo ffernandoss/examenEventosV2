@@ -9,49 +9,49 @@
         android:id="@+id/editTextNombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nombre" />
+        android:hint="@string/nombre" />
 
     <EditText
         android:id="@+id/editTextDescripcion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Descripción" />
+        android:hint="@string/descripcion" />
 
     <EditText
         android:id="@+id/editTextDireccion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Dirección" />
+        android:hint="@string/direccion" />
 
     <EditText
         android:id="@+id/editTextPrecio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Precio"
+        android:hint="@string/precio"
         android:inputType="numberDecimal" />
 
     <EditText
         android:id="@+id/editTextFecha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Fecha" />
+        android:hint="@string/fecha" />
 
     <EditText
         android:id="@+id/editTextAforo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Aforo"
+        android:hint="@string/aforo"
         android:inputType="number" />
 
     <Button
         android:id="@+id/buttonAceptar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Aceptar" />
+        android:text="@string/aceptar" />
 
     <Button
         android:id="@+id/buttonCancelar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cancelar" />
+        android:text="@string/cancelar" />
 </LinearLayout>

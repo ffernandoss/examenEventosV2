@@ -1,3 +1,16 @@
 <resources>
-    <string name="app_name">examenEventosV2</string>
+    <string name="app_name">ExamenEventosV2</string>
+    <string name="eventos">Eventos</string>
+    <string name="registrar">Registrar</string>
+    <string name="ingles">Inglés</string>
+    <string name="nombre">Nombre</string>
+    <string name="descripcion">Descripción</string>
+    <string name="direccion">Dirección</string>
+    <string name="precio">Precio</string>
+    <string name="fecha">Fecha</string>
+    <string name="aforo">Aforo</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="espanol">Español</string>
+    <string name="cancelar">Cancelar</string>
+    <!-- Otros textos -->
 </resources>
