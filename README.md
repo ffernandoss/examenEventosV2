@@ -98,3 +98,91 @@ Contiene varios `EditText` para ingresar los detalles del evento y dos `Button` 
 ### fragment_registro_eventos.xml
 
 Contiene un `TextView` para el título del registro de eventos.
+
+
+## Cambio de Idioma
+
+Para alternar entre inglés y español en la aplicación, se ha implementado un botón que cambia el idioma de la interfaz. Al pulsar el botón, la aplicación cambiará el idioma y actualizará los textos de los botones y otros elementos de la interfaz.
+
+### Implementación
+
+1. **Definición de cadenas de texto en `strings.xml` y `strings-en.xml`:**
+
+    `res/values/strings.xml`:
+    ```xml
+    <resources>
+        <string name="app_name">ExamenEventosV2</string>
+        <string name="eventos">Eventos</string>
+        <string name="registrar">Registrar</string>
+        <string name="ingles">Inglés</string>
+        <string name="espanol">Español</string>
+        <!-- Otros textos -->
+    </resources>
+    ```
+
+    `res/values-en/strings.xml`:
+    ```xml
+    <resources>
+        <string name="app_name">ExamenEventosV2</string>
+        <string name="eventos">Events</string>
+        <string name="registrar">Register</string>
+        <string name="ingles">English</string>
+        <string name="espanol">Spanish</string>
+        <!-- Otros textos traducidos -->
+    </resources>
+    ```
+
+2. **Modificación de `MainActivity` para alternar entre idiomas:**
+
+    ```kotlin
+    package com.example.exameneventosv2
+
+    import android.content.Intent
+    import android.content.res.Configuration
+    import android.os.Bundle
+    import android.widget.Button
+    import androidx.appcompat.app.AppCompatActivity
+    import java.util.Locale
+
+    class MainActivity : AppCompatActivity() {
+        private lateinit var buttonChangeLanguage: Button
+
+        override fun onCreate(savedInstanceState: Bundle?) {
+            super.onCreate(savedInstanceState)
+            setContentView(R.layout.activity_main)
+
+            if (savedInstanceState == null) {
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragment_container, MainFragment())
+                    .commit()
+            }
+
+            buttonChangeLanguage = findViewById(R.id.buttonChangeLanguage)
+            buttonChangeLanguage.setOnClickListener {
+                val currentLocale = resources.configuration.locale
+                if (currentLocale.language == "en") {
+                    setLocale("es")
+                    buttonChangeLanguage.text = getString(R.string.ingles)
+                } else {
+                    setLocale("en")
+                    buttonChangeLanguage.text = getString(R.string.espanol)
+                }
+            }
+        }
+
+        private fun setLocale(languageCode: String) {
+            val locale = Locale(languageCode)
+            Locale.setDefault(locale)
+            val config = Configuration()
+            config.locale = locale
+            resources.updateConfiguration(config, resources.displayMetrics)
+
+            // Reiniciar la actividad para aplicar los cambios de idioma
+            val refresh = Intent(this, MainActivity::class.java)
+            startActivity(refresh)
+            finish()
+        }
+    }
+    ```
+
+Con estos cambios, al pulsar el botón de cambio de idioma, la aplicación alternará entre inglés y español, actualizando los textos de los botones y otros elementos de la interfaz.
